@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Rate my cakes</h1>
+  <div class="form">
+    <h3>Submit a cake to be rated</h3>
+    <form (submit)="onCakeSubmit()">
+      Baker name <input type="text" name="newCake.baker_name" [(ngModel)]="newCake.baker_name">
+      Image url <input type="text" name="newCake.image_url" [(ngModel)]="newCake.image_url">
+      <input type="submit" value="Submit">
+      <div *ngIf="cakeData">
+        <p class="error" *ngFor="let item of cakeData.message.errors | keyvalue">{{ item.value.message }}</p>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="cakes" class="cakes">
+    <div class="cake" *ngFor="let cake of cakes; let index = index">
+      <div class="image"><a href="javascript:void(0)" (click)="onImageClick(cake._id)"><img [src]="cake.image_url" alt="cake"></a></div>
+      <div>
+        <form (submit)="onCommentSubmit(cake._id, index)">
+          <select name="rating" [(ngModel)]="newPost[index].rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+          <input type="text" name="comment" [(ngModel)]="newPost[index].comment" placeholder="Enter comment">
+          <input type="submit" value="Rate!">
+          <div *ngIf="newPost">
+            <p class="error" *ngFor="let item of newPost[index].errors | keyvalue">{{ item.value.message }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-show *ngIf="cake" class="show" [cake]="cake"></app-show>
+</div>

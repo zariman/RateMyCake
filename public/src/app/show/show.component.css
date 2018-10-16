@@ -1,0 +1,17 @@
+.image2{
+    display: inline-block;
+}
+    .image2 img{
+        max-width: 400px;
+    }
+.post{
+    background: lightblue;
+    padding: 5px;
+    margin: 5px 0;
+    width: 400px;
+}
+.details{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+}

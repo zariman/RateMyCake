@@ -1,0 +1,19 @@
+.image img{
+    max-width: 200px;
+}
+
+.cakes{
+    width: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-height: 500px;
+    white-space:nowrap;
+}
+.cake{
+    display: inline-block;
+    margin: 10px;
+}
+
+.error{
+    color: red;
+}
